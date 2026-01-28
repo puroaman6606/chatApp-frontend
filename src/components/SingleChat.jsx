@@ -266,7 +266,8 @@ const SingleChat = () => {
     try {
       setLoading(true);
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.get(`/api/message/${selectedChat._id}`, config);
+      // const { data } = await axios.get(`/api/message/${selectedChat._id}`, config);
+      const { data } = await axios.get(`https://chatapp-backend-nj3a.onrender.com/api/message/${selectedChat._id}`, config);
       setMessages(data);
       setLoading(false);
       if (socket) {
@@ -327,11 +328,16 @@ const SingleChat = () => {
             Authorization: `Bearer ${userInfo.token}`,
           },
         };
+        // const { data } = await axios.post(
+        //   "/api/message",
+        //   { content: messageToSend, chatId: selectedChat._id },
+        //   config
+        // );
         const { data } = await axios.post(
-          "/api/message",
-          { content: messageToSend, chatId: selectedChat._id },
-          config
-        );
+  "https://chatapp-backend-nj3a.onrender.com/api/message",
+  { content: messageToSend, chatId: selectedChat._id },
+  config
+);
         setMessages((prev) => [...prev, data]);
         if (socket) {
           socket.emit("new message", data);

@@ -109,7 +109,11 @@ const MyChats = () => {
         },
       }
 
-      const { data } = await axios.get("/api/chat", config)
+      // const { data } = await axios.get("/api/chat", config)
+      const { data } = await axios.get(
+  "https://chatapp-backend-nj3a.onrender.com/api/chat", 
+  config
+);
       dispatch(setChats(data))
       
     } catch (error) {
