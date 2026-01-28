@@ -149,11 +149,16 @@ const Signup = () => {
         },
       }
       
+      // const { data } = await axios.post(
+      //   '/api/user',
+      //   { name, email, password },
+      //   config
+      // )
       const { data } = await axios.post(
-        '/api/user',
-        { name, email, password },
-        config
-      )
+         'https://chatapp-backend-nj3a.onrender.com/api/user', // <-- यहाँ पूरा Render URL आएगा
+         { name, email, password },
+          config
+         );
 
       toast.success('Registration Successful!')
       

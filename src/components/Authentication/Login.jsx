@@ -132,11 +132,16 @@ const Login = () => {
         },
       }
 
+      // const { data } = await axios.post(
+      //   '/api/user/login',
+      //   { email, password },
+      //   config
+      // )
       const { data } = await axios.post(
-        '/api/user/login',
-        { email, password },
-        config
-      )
+  'https://chatapp-backend-nj3a.onrender.com/api/user/login', // <-- Pura URL yahan bhi ayega
+  { email, password },
+  config
+);
 
       toast.success('Login Successful')
       dispatch(setCredentials(data))
